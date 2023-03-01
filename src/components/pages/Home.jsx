@@ -1,4 +1,5 @@
-import { API_URL } from "../constants/env";
+import { API_URL } from "../../constants/env";
+
 function App() {
   return (
     <div>
