@@ -4,12 +4,16 @@ import { Link } from "react-router-dom";
 const MainMenu = () => {
   return (
     <nav>
-      <ul>
+      <ul className="flex items-center">
         <li>
-          <Link to="/">Inicio</Link>
+          <Link className="menu-item" to="/">
+            Inicio
+          </Link>
         </li>
         <li>
-          <Link to="/productos">Productos</Link>
+          <Link className="menu-item" to="/productos">
+            Productos
+          </Link>
         </li>
       </ul>
     </nav>

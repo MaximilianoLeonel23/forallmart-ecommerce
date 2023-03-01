@@ -2,7 +2,22 @@
 module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
-    extend: {},
+    container: {
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+        lg: "4rem",
+        xl: "5rem",
+        "2xl": "6rem",
+      },
+    },
+    extend: {
+      fontFamily: {
+        sans: ["Source Sans Pro", "sans-serif"],
+        serif: ["Source Serif Pro", "serif"],
+      },
+      
+    },
   },
   plugins: [],
 };
