@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { API_URL } from "./../../constants/env";
 import axios from "axios";
 import { setToken } from "../../helpers/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import MainLogin from "./../templat/MainLogin";
 
 const Login = () => {
@@ -29,7 +29,7 @@ const Login = () => {
   };
 
   return (
-    <MainLogin>
+    <MainLogin title="Inicia sesión">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col items-center">
           <div className="py-2">
@@ -50,10 +50,13 @@ const Login = () => {
               required
             />
           </div>
-          <div className="py-2">
+          <div className="py-2 flex flex-col gap-y-2">
             <button type="submit" className="btn-ghost">
               Ingresar
             </button>
+            <Link to="/registro" className="font-light">
+              ¿Deseas registrarte?
+            </Link>
           </div>
           {error && (
             <span className="text-red-500">{error?.response?.data?.data}</span>
