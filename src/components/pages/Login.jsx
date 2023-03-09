@@ -4,10 +4,13 @@ import axios from "axios";
 import { setToken } from "../../helpers/auth";
 import { useNavigate, Link } from "react-router-dom";
 import MainLogin from "./../templat/MainLogin";
-
+import { UserContext } from "../../context/UserContext";
+import { useContext } from "react";
 const Login = () => {
   const [error, setError] = useState();
   const nav = useNavigate();
+
+  const { setUserData } = useContext(UserContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
@@ -20,6 +23,8 @@ const Login = () => {
       .post(`${API_URL}/public/login`, data)
       .then((resp) => {
         setToken(resp.data.data.token);
+        setUserData(resp.data.data.user);
+
         nav("/");
       })
       .catch((error) => {

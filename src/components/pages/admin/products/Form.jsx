@@ -54,7 +54,7 @@ const Form = () => {
         })
         .then((resp) => {
           console.log("Producto creado")
-
+          nav("/admin/productos")
         })
         .catch((error) => {
           setError(error)

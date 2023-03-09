@@ -18,11 +18,8 @@ const Products = () => {
         {data.length === 0 && <p>No existen productos</p>}
         {data.map((prod) => (
           <ProductCard
-            description={prod.description}
-            product_name={prod.product_name}
-            images={prod.images}
-            price={prod.price}
-            id={prod.id}
+            prod={prod}
+            key={prod.id}
           />
         ))}
       </div>

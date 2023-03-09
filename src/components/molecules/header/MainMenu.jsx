@@ -1,11 +1,16 @@
+import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { CartContext } from "../../../context/CartContext";
+import { UserContext } from "../../../context/UserContext";
 import { deleteToken, token } from "./../../../helpers/auth";
 const MainMenu = () => {
   const nav = useNavigate();
-
+  const { userData, setUserData } = useContext(UserContext);
+  const { state } = useContext(CartContext);
   const handleSession = () => {
     deleteToken();
     nav("/");
+    setUserData();
   };
 
   return (
@@ -21,6 +26,11 @@ const MainMenu = () => {
             Productos
           </Link>
         </li>
+        <li>
+          <Link className="menu-item" to="/carrito">
+            Carrito({state.cart.length})
+          </Link>
+        </li>
 
         {!token() ? (
           <li>
@@ -30,11 +40,14 @@ const MainMenu = () => {
           </li>
         ) : (
           <>
-            <li>
-              <Link className="menu-item" to="/admin/productos">
-                Administración
-              </Link>
-            </li>
+            {userData?.is_admin && (
+              <li>
+                <Link className="menu-item" to="/admin/productos">
+                  Administración
+                </Link>
+              </li>
+            )}
+
             <li>
               <a onClick={handleSession} className="menu-item cursor-pointer">
                 Cerrar sesión
