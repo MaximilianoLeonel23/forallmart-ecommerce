@@ -4,9 +4,13 @@ import CartItem from "../organisms/CartItem";
 import { API_URL } from "./../../constants/env";
 import { token } from "./../../helpers/auth";
 import axios from "axios";
+import PayPalPayment from "../organisms/PayPalPayment";
 const Cart = () => {
   const { state } = useContext(CartContext);
   const [order, setOrder] = useState();
+
+  let value = 0;
+  state.cart.forEach((c) => (value += c.price));
 
   const handleOrder = () => {
     let products = state.cart.map((p) => {
@@ -52,7 +56,10 @@ const Cart = () => {
                 Crear orden
               </button>
             ) : (
-              <p>ID de la orden de compra: {order.id}</p>
+              <>
+                <p>ID de la orden de compra: {order.id}</p>
+                <PayPalPayment value={value} order={order} />
+              </>
             )}
           </div>
         )}

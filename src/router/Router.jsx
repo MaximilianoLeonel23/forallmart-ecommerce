@@ -10,6 +10,9 @@ import Table from "../components/pages/admin/products/Table";
 import Product from "../components/pages/Product";
 import AdminPage from "../components/templat/AdminPage";
 import Cart from "../components/pages/Cart";
+import Payment from './../components/pages/Payment';
+import Profile from "../components/pages/Profile";
+import Sales from './../components/pages/Sales';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +34,14 @@ const router = createBrowserRouter([
       {
         path: "/carrito",
         element: <Cart/>
+      },
+      {
+        path: "/pago-exitoso",
+        element: <Payment/>
+      },
+      {
+        path: "/perfil",
+        element: <Profile/>
       },
     ],
   },
@@ -57,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/productos/editar/:id",
         element: <Form />,
+      },
+      {
+        path: "/admin/ventas",
+        element: <Sales />,
       },
     ],
   },

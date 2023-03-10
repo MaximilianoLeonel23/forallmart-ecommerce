@@ -15,7 +15,7 @@ const MainMenu = () => {
 
   return (
     <nav>
-      <ul className="flex items-center">
+      <ul className="flex items-center gap-x-8">
         <li>
           <Link className="menu-item" to="/">
             Inicio
@@ -34,8 +34,8 @@ const MainMenu = () => {
 
         {!token() ? (
           <li>
-            <Link className="menu-item" to="/login">
-              Iniciar sesión
+            <Link to="/login">
+              <button className="btn-primary">Inicia sesión</button>
             </Link>
           </li>
         ) : (
@@ -47,7 +47,11 @@ const MainMenu = () => {
                 </Link>
               </li>
             )}
-
+            <li>
+              <Link className="menu-item" to="/perfil">
+                Perfil
+              </Link>
+            </li>
             <li>
               <a onClick={handleSession} className="menu-item cursor-pointer">
                 Cerrar sesión

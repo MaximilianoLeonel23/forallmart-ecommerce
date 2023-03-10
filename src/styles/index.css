@@ -2,13 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
 .menu-item {
-  @apply hover:bg-gray-100 py-3 px-5 rounded;
+  @apply text-gray-800 hover:text-gray-600;
 }
 
 .btn-ghost {
   @apply w-fit h-fit text-orange-500 border border-orange-500  hover:bg-orange-500 hover:text-white transition px-6 py-2 rounded-lg;
 }
 
+.btn-primary {
+  @apply w-fit h-fit text-white bg-primary-500 py-2 px-4 rounded hover:bg-primary-600 transition;
+}
 
+.btn-soft {
+  @apply w-fit h-fit text-primary-500 bg-primary-300 py-2 px-4 rounded hover:bg-primary-200 hover:text-primary-400 transition;
+}
 /* Tabla */

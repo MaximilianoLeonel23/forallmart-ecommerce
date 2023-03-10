@@ -1,11 +1,17 @@
-import { API_URL } from "../../constants/env";
+import Banner from "../organisms/Banner";
+import Previews from "../organisms/Previews";
 
-function App() {
+
+const Home = () => {
+  
   return (
-    <div>
-      <h1>Hola mundo {API_URL}</h1>
-    </div>
+    <>
+      <div>
+        <Banner />
+      </div>
+      <Previews/>
+    </>
   );
-}
+};
 
-export default App;
+export default Home;

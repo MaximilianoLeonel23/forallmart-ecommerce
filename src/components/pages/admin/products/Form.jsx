@@ -10,9 +10,9 @@ import { useEffect, useState } from "react";
 const Form = () => {
   const params = useParams();
   const [product, setProduct] = useState();
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  const nav = useNavigate()
+  const nav = useNavigate();
   useEffect(() => {
     if (params) {
       axios
@@ -40,7 +40,8 @@ const Form = () => {
         },
         stats: {
           stock: Number(e.target.stock.value),
-          ranking: Number(e.target.ranking.value),
+          rating: Number(e.target.rating.value),
+          discount: Number(e.target.discount.value),
         },
       },
     };
@@ -53,11 +54,11 @@ const Form = () => {
           },
         })
         .then((resp) => {
-          console.log("Producto creado")
-          nav("/admin/productos")
+          console.log("Producto creado");
+          nav("/admin/productos");
         })
         .catch((error) => {
-          setError(error)
+          setError(error);
         });
     } else {
       axios
@@ -67,11 +68,11 @@ const Form = () => {
           },
         })
         .then(() => {
-          nav("/admin/productos")
+          nav("/admin/productos");
         })
         .catch((error) => {
-          setError(error)
-          console.log(error)
+          setError(error);
+          console.log(error);
         });
     }
   };
@@ -122,16 +123,21 @@ const Form = () => {
           />
           <Input
             type="number"
-            name="ranking"
+            name="rating"
             placeholder="Calificación"
-            defaultValue={product?.features?.stats?.ranking}
+            defaultValue={product?.features?.stats?.rating}
           />
           <Input
             type="text"
             name="color"
             placeholder="Color"
             defaultValue={product?.features?.details?.color}
-            required
+          />
+          <Input
+            type="number"
+            name="discount"
+            placeholder="Descuento"
+            defaultValue={product?.features?.stats?.discount}
           />
           <Input
             type="number"
@@ -142,7 +148,17 @@ const Form = () => {
           />
           <Select
             name="category"
-            categories={["joyeria", "ropa", "autos", "hogar"]}
+            categories={[
+              "joyeria",
+              "moda",
+              "autos",
+              "hogar",
+              "tecnología",
+              "electrodomésticos",
+              "salud y belleza",
+              "accesorios",
+              "otros",
+            ]}
             defaultValue={product?.features?.details?.category}
           />
           <TextArea

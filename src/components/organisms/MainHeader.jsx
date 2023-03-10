@@ -2,7 +2,7 @@ import Logo from "../molecules/header/Logo";
 const MainHeader = ({ children }) => {
   return (
     <div className="fixed w-full border border-b-gray-200 bg-white z-20">
-      <div className="container flex justify-between items-center mx-auto py-4">
+      <div className="container flex justify-between items-center mx-auto h-16">
         <Logo />
         {children}
       </div>

@@ -12,11 +12,30 @@ module.exports = {
       },
     },
     extend: {
-      fontFamily: {
-        sans: ["Source Sans Pro", "sans-serif"],
-        serif: ["Source Serif Pro", "serif"],
+      colors: {
+        primary: {
+          200: "#FFEAEA",
+          300: "#FECDCD",
+          400: "#FD9191",
+          500: "#FC6C6C",
+          600: "#EC4C4C",
+        },
+        complementary: {
+          500: "#C8D7D2",
+        },
+        shine: {
+          500: "#FCD86C",
+        },
       },
-      
+      height: {
+        banner: "25rem",
+        card: "30rem",
+        15: "15rem",
+        30: "30rem",
+      },
+      maxHeight: {
+        card: "30rem",
+      },
       
     },
   },

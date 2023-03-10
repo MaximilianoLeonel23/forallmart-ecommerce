@@ -14,7 +14,7 @@ const Register = () => {
       email: e.target.email.value,
       password: e.target.password.value,
       details: {
-        fullName: e.target.fullName.value,
+        fullname: e.target.fullname.value,
       },
     };
 
@@ -34,7 +34,7 @@ const Register = () => {
         <div className="flex flex-col items-center">
           <Input
             type={"text"}
-            name={"fullName"}
+            name={"fullname"}
             placeholder={"Nombre y apellido"}
             required={true}
           />

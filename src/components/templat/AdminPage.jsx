@@ -3,7 +3,7 @@ import AdminMenu from "../molecules/header/AdminMenu";
 import MainHeader from "./../organisms/MainHeader";
 const AdminPage = () => {
   return (
-    <div>
+    <div className="bg-gray-50 min-h-screen">
       <MainHeader>
         <AdminMenu/>
       </MainHeader>
