@@ -2,6 +2,7 @@ import useFetch from "../../hooks/useFetch";
 import ProductCard from "../organisms/ProductCard";
 import { useState } from "react";
 import { useEffect } from "react";
+import Loading from "./../molecules/Loading";
 
 const Products = () => {
   const { data, error, loading } = useFetch("public/products");
@@ -20,12 +21,17 @@ const Products = () => {
     );
   };
 
-  if (loading) return <h1>Cargando...</h1>;
+  if (loading)
+    return (
+      <div className="py-8">
+        <Loading />
+      </div>
+    );
 
   if (error) return <h1>Error en la petición de productos</h1>;
 
   return (
-    <div className="pb-16">
+    <div>
       <div className="flex justify-between py-8">
         <h1 className="text-2xl font-bold text-gray-800">Nuestros productos</h1>
         <input

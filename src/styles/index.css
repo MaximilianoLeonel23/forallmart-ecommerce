@@ -11,7 +11,7 @@ body {
 }
 
 .btn-ghost {
-  @apply w-fit h-fit text-orange-500 border border-orange-500  hover:bg-orange-500 hover:text-white transition px-6 py-2 rounded-lg;
+  @apply w-fit h-fit text-primary-500 border border-primary-500  hover:bg-primary-500 hover:text-white transition py-2  px-4 rounded;
 }
 
 .btn-primary {

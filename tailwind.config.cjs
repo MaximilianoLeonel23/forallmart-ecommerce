@@ -36,7 +36,10 @@ module.exports = {
       maxHeight: {
         card: "30rem",
       },
-      
+      animation: {
+        "ping-slow": "ping 3s linear infinite",
+        "pulse-slow": "pulse 1.5s linear infinite",
+      },
     },
   },
   plugins: [],

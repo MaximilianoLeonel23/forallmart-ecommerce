@@ -11,6 +11,7 @@ const Product = () => {
   const [product, setProduct] = useState({});
   console.log(product);
   const details = product?.features?.details;
+  const stats = product?.features?.stats;
   useEffect(() => {
     axios
       .get(`${API_URL}/public/products/${params.id}`)
@@ -26,9 +27,11 @@ const Product = () => {
           <div className="flex flex-col gap-y-2">
             <div className="flex items-center gap-x-4">
               <h1 className="text-2xl font-bold">{product?.product_name}</h1>
-              <p className="text-gray-400">
-                {product?.features?.stats?.stock} disponibles
-              </p>
+              {stats?.stock ? (
+                <p className="text-gray-300">{stats.stock} disponibles</p>
+              ) : (
+                <></>
+              )}
             </div>
             <div className="w-fit">
               {product.features?.stats?.discount ? (
@@ -57,9 +60,9 @@ const Product = () => {
             </p>
 
             <ul className="flex flex-col gap-y-2 text-gray-500 text-sm">
-              {details?.brand ? <li>Marca: {details.brand}</li> : <p></p>}
-              {details?.color ? <li>Color: {details.color}</li> : <p></p>}
-              {details?.model ? <li>Modelo: {details.model}</li> : <p></p>}
+              {details?.brand ? <li>Marca: {details.brand}</li> : <></>}
+              {details?.color ? <li>Color: {details.color}</li> : <></>}
+              {details?.model ? <li>Modelo: {details.model}</li> : <></>}
               {details?.category ? (
                 <li>
                   Categoría:{" "}
@@ -67,9 +70,9 @@ const Product = () => {
                     details.category.slice(1)}
                 </li>
               ) : (
-                <p></p>
+                <></>
               )}
-              {details?.year ? <li>Año: {details.year}</li> : <p></p>}
+              {details?.year ? <li>Año: {details.year}</li> : <></>}
             </ul>
           </div>
         </div>

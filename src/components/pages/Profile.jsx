@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import useFetch from "./../../hooks/useFetch";
-import { API_URL } from "./../../constants/env";
 import { token } from "./../../helpers/auth";
+import Loading from "../molecules/Loading";
 
 const Profile = () => {
   const { userData, setUserData } = useContext(UserContext);
@@ -12,11 +12,16 @@ const Profile = () => {
     },
   });
 
-  if (loading) return <p>cargando</p>;
-  if (error) return <p>error</p>
+  if (loading)
+    return (
+      <div className="py-8">
+        <Loading />
+      </div>
+    );
+  if (error) return <p>error</p>;
 
   return (
-    <div>
+    <div className="py-8">
       <h1>Perfil de {userData?.details?.fullname}</h1>
       <p>{JSON.stringify(userData)}</p>
       <div className="pt-16">

@@ -5,13 +5,19 @@ import { API_URL } from "./../../constants/env";
 import { token } from "./../../helpers/auth";
 import axios from "axios";
 import PayPalPayment from "../organisms/PayPalPayment";
+import { formatPrice } from "./../../helpers/number";
 const Cart = () => {
   const { state } = useContext(CartContext);
   const [order, setOrder] = useState();
 
   let value = 0;
   state.cart.forEach((c) => (value += c.price));
+  let ship = 0;
+  if (value < 1000) {
+    ship = value * 0.1;
+  }
 
+  console.log(value);
   const handleOrder = () => {
     let products = state.cart.map((p) => {
       return {
@@ -36,33 +42,62 @@ const Cart = () => {
       });
   };
   return (
-    <div className="flex">
-      <div className="w-full bg-gray-200 mx-auto mt-8 py-8 px-16 rounded">
-        {/* producto */}
-        {!state?.cart?.length > 0 ? (
-          <p>No hay productos en el carrito</p>
-        ) : (
-          <div>
-            {state.cart.map((prod) => {
-              return (
-                <div>
-                  <CartItem key={prod.id} prod={prod} />
-                </div>
-              );
-            })}
+    <div className="flex flex-col justify-start gap-x-8 pt-8">
+      <div className="border-b border-gray-200 pb-4">
+        <h1 className="text-2xl font-bold text-gray-800">Carrito de compras</h1>
+      </div>
+      <div className="w-full flex items-start gap-x-8 mt-8">
+        <div className="flex flex-col w-2/3">
+          {!state?.cart?.length > 0 ? (
+            <p>No hay productos en el carrito</p>
+          ) : (
+            <div>
+              {state.cart.map((prod) => {
+                return (
+                  <div>
+                    <CartItem key={prod.id} prod={prod} />
+                  </div>
+                );
+              })}
 
-            {!order ? (
-              <button className="btn-ghost" onClick={handleOrder}>
-                Crear orden
-              </button>
-            ) : (
-              <>
-                <p>ID de la orden de compra: {order.id}</p>
-                <PayPalPayment value={value} order={order} />
-              </>
-            )}
+              {!order ? (
+                <button className="btn-primary" onClick={handleOrder}>
+                  Crear orden
+                </button>
+              ) : (
+                <>
+                  <p>ID de la orden de compra: {order.id}</p>
+                  <PayPalPayment value={value} order={order} />
+                </>
+              )}
+            </div>
+          )}
+        </div>
+        <div className="w-1/3 bg-white border border-gray-200 rounded p-4">
+          <h3 className="text-xl mb-6">Resumen</h3>
+          <div className="flex flex-col gap-y-4">
+            <div className="flex justify-between items-center">
+              <p>Subtotal</p>
+              <p>{formatPrice(value)}</p>
+            </div>
+            {/* <div className="flex justify-between items-center bg-slate-100 text-gray-400 px-2 py-1 rounded-sm">
+              <p>Descuento</p>
+              <p>$00,00</p>
+            </div> */}
+            <div className="flex justify-between items-center">
+              <p>Envío</p>
+              {ship ? <p>{formatPrice(ship)}</p> : <p className="text-primary-500">Gratis</p>}
+            </div>
+            <div className="flex justify-between items-center text-lg font-bold">
+              <p>Total</p>
+              {ship ? (
+                <p>{formatPrice(value + ship)}</p>
+              ) : (
+                <p>{formatPrice(value)}</p>
+              )}
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
