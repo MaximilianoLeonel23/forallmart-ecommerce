@@ -6,6 +6,8 @@ import { useNavigate, Link } from "react-router-dom";
 import MainLogin from "./../templat/MainLogin";
 import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
+import Logo from "../molecules/header/Logo";
+import Input from "../molecules/form/Input";
 const Login = () => {
   const [error, setError] = useState();
   const nav = useNavigate();
@@ -34,40 +36,38 @@ const Login = () => {
   };
 
   return (
-    <MainLogin title="Inicia sesión">
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-col items-center">
-          <div className="py-2">
-            <input
-              className="rounded-md border px-4 py-1"
-              type="email"
-              name="email"
-              placeholder="correo electrónico"
-              required
-            />
+    <MainLogin>
+      <section className="bg-white relative drop-shadow text-gray-800 rounded px-8 pt-20 pb-8">
+        <div className="absolute top-4 left-4">
+          <Logo />
+        </div>
+        <h1 className="text-lg font-medium text-center mb-4">Inicia sesión</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="flex flex-col gap-y-2 items-center">
+            <div className="text-sm w-full">
+              <label for="email">Email</label>
+              <Input type="email" id="email" name="email" required />
+            </div>
+            <div className="text-sm w-full">
+              <label for="password">Contraseña</label>
+              <Input type="password" id="password" name="password" required />
+            </div>
           </div>
-          <div className="py-2">
-            <input
-              className="rounded-md border px-4 py-1"
-              type="password"
-              name="password"
-              placeholder="contraseña"
-              required
-            />
-          </div>
-          <div className="py-2 flex flex-col gap-y-2">
-            <button type="submit" className="btn-ghost">
+          <div className="my-8 flex flex-col items-center gap-y-2">
+            <button type="submit" className="btn-primary">
               Ingresar
             </button>
-            <Link to="/registro" className="font-light">
+            <Link to="/registro" className="font-light text-sm">
               ¿Deseas registrarte?
             </Link>
+            {error && (
+              <span className="text-primary-600 bg-primary-300 py-0.5 px-4 rounded text-sm ">
+                {error?.response?.data?.data}
+              </span>
+            )}
           </div>
-          {error && (
-            <span className="text-red-500">{error?.response?.data?.data}</span>
-          )}
-        </div>
-      </form>
+        </form>
+      </section>
     </MainLogin>
   );
 };

@@ -81,7 +81,7 @@ const Form = () => {
     <div className="w-1/2 mx-auto mt-8">
       <h1>{params.id ? "Editar" : "Agregar"} producto</h1>
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 ">
+        <div className="grid grid-cols-2 gap-x-4">
           <Input
             type="text"
             name="productName"

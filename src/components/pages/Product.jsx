@@ -28,7 +28,7 @@ const Product = () => {
             <div className="flex items-center gap-x-4">
               <h1 className="text-2xl font-bold">{product?.product_name}</h1>
               {stats?.stock ? (
-                <p className="text-gray-300">{stats.stock} disponibles</p>
+              <p className="text-gray-300">{stats.stock} disponibles</p>
               ) : (
                 <></>
               )}

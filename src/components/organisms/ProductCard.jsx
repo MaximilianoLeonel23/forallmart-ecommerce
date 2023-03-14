@@ -27,7 +27,9 @@ const ProductCard = ({ prod }) => {
         </div>
         <div className="flex flex-col h-15 text-gray-800 justify-between  p-4">
           <div className="leading-8">
-            <h4 className="font-semibold text-lg">{prod.product_name}</h4>
+            <Link to={`/productos/${prod.id}`}>
+              <h4 className="font-semibold text-lg">{prod.product_name}</h4>
+            </Link>
             <p className="text-sm "> {formatStr(prod.description)}</p>
             {prod?.features?.stats?.discount ? (
               <div className="flex gap-x-4 mt-4">
@@ -41,12 +43,16 @@ const ProductCard = ({ prod }) => {
                         prod.price * (prod.features.stats.discount / 100)
                     )}
                   </p>
-                  <span className="font-bold text-primary-400">{prod.features.stats.discount}% OFF</span>
+                  <span className="font-bold text-primary-400">
+                    {prod.features.stats.discount}% OFF
+                  </span>
                 </div>
               </div>
             ) : (
               <div className="mt-4">
-                <p className="py-2 font-semibold text-xl">{formatPrice(prod.price)}</p>
+                <p className="py-2 font-semibold text-xl">
+                  {formatPrice(prod.price)}
+                </p>
               </div>
             )}
           </div>

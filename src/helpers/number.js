@@ -5,3 +5,11 @@ export const formatPrice = (amount) => {
     currencyDisplay: "narrowSymbol",
   }).format(amount);
 };
+
+export const calculateInvPrice = (inv) => {
+  let price = 0;
+  inv?.invoice_details_report.map((item) => {
+    price += item.invoice_detail.unit_price;
+  });
+  return price;
+};

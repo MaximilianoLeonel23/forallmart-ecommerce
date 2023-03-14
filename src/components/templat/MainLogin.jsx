@@ -1,11 +1,10 @@
-const MainLogin = ({ children, title }) => {
+const MainLogin = ({ children }) => {
   return (
-    <div className="container mx-auto">
-      <div className="pt-16">
-        <div className="py-4">
-          <h1 className="font-semibold text-lg text-gray-700 text-center">{title}</h1>
+    <div className="bg-primary-300 min-h-screen">
+      <div className="container mx-auto ">
+        <div className="flex items-center pt-16">
+          <div className="w-1/3">{children}</div>
         </div>
-        {children}
       </div>
     </div>
   );

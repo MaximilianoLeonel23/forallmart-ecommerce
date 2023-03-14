@@ -3,6 +3,7 @@ import { API_URL } from "../../../../constants/env";
 import { token } from "../../../../helpers/auth";
 import useFetch from "./../../../../hooks/useFetch";
 import axios from "axios";
+import Loading from "../../../molecules/Loading";
 const Table = () => {
   const { data, error, loading } = useFetch("public/products");
 
@@ -23,64 +24,50 @@ const Table = () => {
     }
   };
 
-  if (loading) return <h1>Cargando...</h1>;
+  if (loading)
+  return (
+    <div className="py-8">
+      <Loading />
+    </div>
+  );
 
   if (error) return <h1>Error en la petición de productos</h1>;
 
   return (
-    <div className="w-1/2 mx-auto mt-8">
+    <div>
       <div className="flex justify-between items-center mb-4">
-        <h1 className=" text-gray-800 font-bold">Lista de productos</h1>
+        <h1 className="text-2xl font-bold text-gray-800">Lista de productos</h1>
         <Link to="/admin/productos/crear">
           <button className="btn-ghost">Agregar producto</button>
         </Link>
       </div>
-
-      <table className="overflow-x-auto w-full text-sm text-left">
-        <thead className="uppercase text-gray-800">
-          <tr className="border border-gray-200">
-            <th scope="row" className="py-4 px-4 text-gray-700">
-              Producto
-            </th>
-            <th>Precio</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.length === 0 && (
-            <tr className="border-b">
-              <td className="py-4 px-4 text-gray-700">
-                No existen productos actualmente
-              </td>
-            </tr>
-          )}
-          {data.map((prod) => (
-            <tr className="border-b" key={prod.id}>
-              <td scope="row" className="py-4 px-4 text-gray-700">
-                {prod.product_name}
-              </td>
-              <td>{prod.price}</td>
-              <td>
-                <Link
-                  to={`/admin/productos/editar/${prod.id}`}
-                  className="text-blue-500 hover:bg-blue-100 p-2 rounded-sm"
-                >
-                  Editar
-                </Link>
-              </td>
-              <td>
-                <a
-                  className="text-red-500 cursor-pointer hover:bg-red-100 p-2 rounded-sm"
-                  onClick={() => deleteProduct(prod)}
-                >
-                  Eliminar
-                </a>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <section className="overflow-x-auto w-full">
+        <div className="grid grid-cols-4 gap-x-8 place-items-center uppercase border-y p-4 border-gray-300 font-medium text-gray-700">
+          <h4>Producto</h4>
+          <h4>Precio</h4>
+          <h4>Editar</h4>
+          <h4>Eliminar</h4>
+        </div>
+        {data.length === 0 && (
+          <div className="border-b border-gray-200">
+            <p className="py-4 px-4 text-gray-700">
+              No existen productos actualmente
+            </p>
+          </div>
+        )}
+        {data.map((prod) => (
+          <div className="grid grid-cols-4 gap-x-8 place-items-center items-center border-b p-4 border-gray-200 text-gray-600">
+            <p>{prod.product_name}</p>
+            <p>{prod.price}</p>
+            <Link to={`/admin/productos/editar/${prod.id}`}>
+              <button className="btn-edit">Editar</button>
+            </Link>
+            <a onClick={() => deleteProduct(prod)}>
+              <button className="btn-soft">Eliminar</button>
+            </a>
+          </div>
+        ))}
+      </section>
     </div>
   );
 };

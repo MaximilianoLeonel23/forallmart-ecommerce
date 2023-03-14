@@ -21,4 +21,8 @@ body {
 .btn-soft {
   @apply w-fit h-fit text-primary-500 bg-primary-300 py-2 px-4 rounded hover:bg-primary-200 hover:text-primary-400 transition;
 }
+
+.btn-edit {
+  @apply w-fit h-fit text-blue-500 bg-blue-300 py-2 px-4 rounded hover:bg-blue-200 hover:text-blue-400 transition;
+}
 /* Tabla */
