@@ -37,13 +37,13 @@ const Login = () => {
 
   return (
     <MainLogin>
-      <section className="bg-white relative drop-shadow text-gray-800 rounded px-8 pt-20 pb-8">
+      <section className="bg-white relative drop-shadow text-gray-800 rounded px-8 pt-20 pb-4 sm:pb-8">
         <div className="absolute top-4 left-4">
           <Logo />
         </div>
         <h1 className="text-lg font-medium text-center mb-4">Inicia sesión</h1>
         <form onSubmit={handleSubmit}>
-          <div className="flex flex-col gap-y-2 items-center">
+          <div className="flex flex-col gap-y-1 sm:gap-y-2 items-center">
             <div className="text-sm w-full">
               <label for="email">Email</label>
               <Input type="email" id="email" name="email" required />
@@ -53,7 +53,7 @@ const Login = () => {
               <Input type="password" id="password" name="password" required />
             </div>
           </div>
-          <div className="my-8 flex flex-col items-center gap-y-2">
+          <div className="my-4 sm:my-8 flex flex-col items-center gap-y-2">
             <button type="submit" className="btn-primary">
               Ingresar
             </button>

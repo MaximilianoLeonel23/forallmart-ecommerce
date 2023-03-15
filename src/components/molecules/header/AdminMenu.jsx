@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const AdminMenu = () => {
   return (
-    <nav>
+    <nav className="hidden sm:block">
       <ul className="flex items-center gap-x-8">
         <li>
           <Link className="menu-item" to="/admin/productos">

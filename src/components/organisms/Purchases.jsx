@@ -7,7 +7,7 @@ const Purchases = ({userData, data}) => {
           Compras de {userData?.details?.fullname}
         </h2>
         <div className="flex flex-col">
-          <div className="grid grid-cols-3 text-center border-y border-gray-300 py-4 font-medium">
+          <div className="grid grid-cols-3 text-center text-sm sm:text-base border-y border-gray-300 py-2 sm:py-4 font-medium">
             <p>Fecha</p>
             <p>Orden de compra</p>
             <p>Monto</p>
@@ -16,7 +16,7 @@ const Purchases = ({userData, data}) => {
             return (
               <div
                 key={inv?.invoice?.id}
-                className="grid grid-cols-3 text-center border-b  border-gray-200 py-4 text-sm"
+                className="grid grid-cols-3 text-center text-xs sm:text-sm border-b  border-gray-200 py-2 sm:py-4"
               >
                 <p>{Date(inv?.invoice?.created_at)}</p>
 

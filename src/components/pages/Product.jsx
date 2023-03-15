@@ -4,7 +4,7 @@ import { API_URL } from "./../../constants/env";
 import axios from "axios";
 import { CartContext } from "../../context/CartContext";
 import { formatPrice } from "./../../helpers/number";
-import Star from "../atoms/Star";
+
 const Product = () => {
   const params = useParams();
   const { state, dispatch } = useContext(CartContext);
@@ -20,12 +20,12 @@ const Product = () => {
   }, []);
 
   return (
-    <div className="flex justify-start gap-x-8 pt-8">
-      <article className="w-1/2 flex flex-col justify-between bg-white border border-gray-200 rounded p-8 text-gray-800">
+    <div className="flex flex-col sm:flex-row justify-start gap-y-8 sm:gap-x-8 sm:pt-8">
+      <article className="w-full sm:w-1/2 flex flex-col justify-between bg-white border border-gray-200 rounded p-8 text-gray-800">
         <div>
           {/* Cabecera */}
           <div className="flex flex-col gap-y-2">
-            <div className="flex items-center gap-x-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-x-4">
               <h1 className="text-2xl font-bold">{product?.product_name}</h1>
               {stats?.stock ? (
               <p className="text-gray-300">{stats.stock} disponibles</p>
@@ -36,7 +36,7 @@ const Product = () => {
             <div className="w-fit">
               {product.features?.stats?.discount ? (
                 <div className="flex flex-col gap-y-2">
-                  <p className="py-1 px-4 text-primary-500 bg-primary-300 rounded font-semibold text-3xl">
+                  <p className="py-1 px-4 text-primary-500 bg-primary-300 rounded font-semibold text-lg sm:text-3xl">
                     {formatPrice(
                       product.price -
                         product.price * (product.features.stats.discount / 100)
@@ -55,11 +55,11 @@ const Product = () => {
           </div>
           {/* Descripcion */}
           <div className="flex flex-col gap-y-2 my-4 py-2 border-t border-t-gray-200 rounded">
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-500 text-xs sm:text-sm">
               Descripción: {product?.description}
             </p>
 
-            <ul className="flex flex-col gap-y-2 text-gray-500 text-sm">
+            <ul className="flex flex-col gap-y-2 text-gray-500 text-xs sm:text-sm">
               {details?.brand ? <li>Marca: {details.brand}</li> : <></>}
               {details?.color ? <li>Color: {details.color}</li> : <></>}
               {details?.model ? <li>Modelo: {details.model}</li> : <></>}
@@ -109,9 +109,9 @@ const Product = () => {
         </div>
       </article>
       {/* Imagen */}
-      <div className="w-1/2">
+      <div className="w-full sm:w-1/2">
         <img
-          className="w-full object-cover h-30"
+          className="w-full object-contain h-30"
           src={product?.images}
           alt={product?.product_name}
         />

@@ -14,6 +14,10 @@
 // ];
 
 // export const randomColor = () => {
-//     console.log(colors.length)
-//   return Math.floor(Math.random() * colors.length);
+//   let random = Math.floor(Math.random() * colors.length);
+//   const bg = `bg-${colors[random]}-200`;
+//   const letter = `text-${colors[random]}-500`;
+//   return [bg, letter];
 // };
+
+// Usar useEffect para q la función se ejecute una sola vez

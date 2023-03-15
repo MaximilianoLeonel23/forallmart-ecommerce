@@ -6,6 +6,7 @@ import { token } from "./../../helpers/auth";
 import axios from "axios";
 import PayPalPayment from "../organisms/PayPalPayment";
 import { formatPrice } from "./../../helpers/number";
+import Resumen from "../organisms/Resumen";
 const Cart = () => {
   const { state } = useContext(CartContext);
   const [order, setOrder] = useState();
@@ -42,12 +43,12 @@ const Cart = () => {
       });
   };
   return (
-    <div className="flex flex-col justify-start gap-x-8 pt-8">
+    <div className="flex flex-col justify-start gap-x-8 sm:pt-8">
       <div className="border-b border-gray-200 pb-4">
         <h1 className="text-2xl font-bold text-gray-800">Carrito de compras</h1>
       </div>
-      <div className="w-full flex items-start gap-x-8 mt-8">
-        <div className="flex flex-col w-2/3">
+      <div className="w-full flex flex-col sm:flex-row items-start gap-y-8 sm:gap-x-8 mt-8">
+        <div className="flex flex-cols sm:w-2/3">
           {!state?.cart?.length > 0 ? (
             <div className="flex gap-x-2">
               <svg
@@ -78,7 +79,7 @@ const Cart = () => {
               })}
 
               {!order ? (
-                <button className="btn-primary" onClick={handleOrder}>
+                <button className="btn-primary mt-2" onClick={handleOrder}>
                   Crear orden
                 </button>
               ) : (
@@ -90,35 +91,7 @@ const Cart = () => {
             </div>
           )}
         </div>
-        <div className="w-1/3 bg-white border border-gray-200 rounded p-4">
-          <h3 className="text-xl mb-6">Resumen</h3>
-          <div className="flex flex-col gap-y-4">
-            <div className="flex justify-between items-center">
-              <p>Subtotal</p>
-              <p>{formatPrice(value)}</p>
-            </div>
-            {/* <div className="flex justify-between items-center bg-slate-100 text-gray-400 px-2 py-1 rounded-sm">
-              <p>Descuento</p>
-              <p>$00,00</p>
-            </div> */}
-            <div className="flex justify-between items-center">
-              <p>Envío</p>
-              {ship ? (
-                <p>{formatPrice(ship)}</p>
-              ) : (
-                <p className="text-primary-500">Gratis</p>
-              )}
-            </div>
-            <div className="flex justify-between items-center text-lg font-bold">
-              <p>Total</p>
-              {ship ? (
-                <p>{formatPrice(value + ship)}</p>
-              ) : (
-                <p>{formatPrice(value)}</p>
-              )}
-            </div>
-          </div>
-        </div>
+        <Resumen ship={ship} value={value} />
       </div>
     </div>
   );

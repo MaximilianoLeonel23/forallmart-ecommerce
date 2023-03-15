@@ -19,11 +19,11 @@ const Previews = () => {
   );
 
   return (
-    <section className="py-12">
-      <h2 className="text-gray-800 font-bold text-2xl text-center">
-        ¡No te pierdas nuestras ofertas! Descuentos de primavera ahora
+    <section className="py-6 sm:py-12">
+      <h2 className="text-gray-800 font-bold text-lg sm:text-2xl text-center">
+        ¡No te pierdas nuestras ofertas y descuentos de primavera!
       </h2>
-      <div className="grid grid-cols-3 gap-6 mt-8">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 mt-8">
         {productsWithDiscount.map((prod) => {
           return <ProductCard prod={prod} key={prod.id} />;
         })}

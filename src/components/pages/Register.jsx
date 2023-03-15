@@ -24,6 +24,7 @@ const Register = () => {
       .post(`${API_URL}/public/users`, data)
       .then(() => {
         nav("/login");
+        window.alert("Su cuenta ha sido creada con éxito")
       })
       .catch((error) => {
         setError(error);
@@ -31,41 +32,6 @@ const Register = () => {
   };
 
   return (
-    // <MainLogin title="Regístrate">
-    //   <form onSubmit={handleSubmit}>
-    //     <div className="flex flex-col items-center">
-    //       <Input
-    //         type={"text"}
-    //         name={"fullname"}
-    //         placeholder={"Nombre y apellido"}
-    //         required={true}
-    //       />
-    //       <Input
-    //         type={"email"}
-    //         name={"email"}
-    //         placeholder={"Correo eletrónico"}
-    //         required={true}
-    //       />
-    //       <Input
-    //         type={"password"}
-    //         name={"password"}
-    //         placeholder={"Contraseña"}
-    //         required={true}
-    //       />
-    //       <div className="py-2 flex flex-col gap-y-2 ">
-    //         <button type="submit" className="btn-ghost">
-    //           Ingresar
-    //         </button>
-    //         <Link to="/login" className="font-light">
-    //           ¿Ya tienes una cuenta? Inicia sesión
-    //         </Link>
-    //       </div>
-    //       {error && (
-    //         <span className="text-red-500">{error?.response?.data?.data}</span>
-    //       )}
-    //     </div>
-    //   </form>
-    // </MainLogin>
     <MainLogin>
       <section className="bg-white relative drop-shadow text-gray-800 rounded px-8 pt-20 pb-8">
         <div className="absolute top-4 left-4">
@@ -73,7 +39,7 @@ const Register = () => {
         </div>
         <h1 className="text-lg font-medium text-center mb-4">Regístrate</h1>
         <form onSubmit={handleSubmit}>
-          <div className="flex flex-col gap-y-2 items-center">
+          <div className="flex flex-col gap-y-1 sm:gap-y-2 items-center">
             <div className="text-sm w-full">
               <label for="fullname">Nombre y apellido</label>
               <Input type="text" name="fullname" required />
@@ -87,7 +53,7 @@ const Register = () => {
               <Input type="password" id="password" name="password" required />
             </div>
           </div>
-          <div className="my-8 flex flex-col items-center gap-y-2">
+          <div className="my-4 sm:my-8 flex flex-col items-center gap-y-2">
             <button type="submit" className="btn-primary">
               Crear cuenta
             </button>

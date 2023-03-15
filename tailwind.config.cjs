@@ -32,6 +32,7 @@ module.exports = {
         card: "30rem",
         15: "15rem",
         30: "30rem",
+        
       },
       maxHeight: {
         card: "30rem",

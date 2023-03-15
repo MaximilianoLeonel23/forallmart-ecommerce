@@ -25,17 +25,17 @@ const Sales = () => {
       </div>
       <section className="overflow-x-auto w-full">
         <div className="flex flex-col">
-          <div className="grid grid-cols-4 gap-x-8 place-items-center uppercase border-y p-4 border-gray-300 font-medium text-gray-700">
+          <div className="grid grid-cols-4 gap-x-4 sm:gap-x-8 place-items-center uppercase border-y py-2 px-4 sm:py-4 border-gray-300 font-medium text-sm sm:text-base text-gray-700">
             <p>Usuario</p>
             <p>Fecha</p>
-            <p>Orden de venta</p>
+            <p>Orden</p>
             <p>Monto</p>
           </div>
           {data.map((inv) => {
             return (
               <div
                 key={inv?.invoice?.id}
-                className="grid grid-cols-4 gap-x-8 place-items-center items-center border-b p-4 border-gray-200 text-gray-600"
+                className="grid grid-cols-4 gap-x-4 sm:gap-x-8 place-items-center items-center border-b py-2 px-4 sm:py-4 border-gray-200 text-gray-600 text-xs sm:text-sm"
               >
                 <p>{inv?.user?.email}</p>
                 <p>{Date(inv?.invoice?.created_at)}</p>

@@ -7,7 +7,7 @@ const AdminPage = () => {
       <MainHeader>
         <AdminMenu/>
       </MainHeader>
-      <div className="pt-24 pb-16 container mx-auto">
+      <div className="pt-20 sm:pt-24 pb-16 container mx-auto">
         <Outlet />
       </div>
     </div>

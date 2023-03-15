@@ -25,24 +25,24 @@ const Table = () => {
   };
 
   if (loading)
-  return (
-    <div className="py-8">
-      <Loading />
-    </div>
-  );
+    return (
+      <div className="py-8">
+        <Loading />
+      </div>
+    );
 
   if (error) return <h1>Error en la petición de productos</h1>;
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-y-2 mb-4">
         <h1 className="text-2xl font-bold text-gray-800">Lista de productos</h1>
         <Link to="/admin/productos/crear">
           <button className="btn-ghost">Agregar producto</button>
         </Link>
       </div>
       <section className="overflow-x-auto w-full">
-        <div className="grid grid-cols-4 gap-x-8 place-items-center uppercase border-y p-4 border-gray-300 font-medium text-gray-700">
+        <div className="grid grid-cols-4 gap-x-8 place-items-center uppercase border-y py-2 px-4 sm:py-4 border-gray-300 font-medium text-sm sm:text-base text-gray-700">
           <h4>Producto</h4>
           <h4>Precio</h4>
           <h4>Editar</h4>
@@ -56,7 +56,7 @@ const Table = () => {
           </div>
         )}
         {data.map((prod) => (
-          <div className="grid grid-cols-4 gap-x-8 place-items-center items-center border-b p-4 border-gray-200 text-gray-600">
+          <div className="grid grid-cols-4 gap-x-8 place-items-center items-center border-b py-2 px-4 sm:py-4 border-gray-200 text-xs sm:text-sm text-gray-600">
             <p>{prod.product_name}</p>
             <p>{prod.price}</p>
             <Link to={`/admin/productos/editar/${prod.id}`}>

@@ -32,16 +32,16 @@ const Products = () => {
 
   return (
     <div>
-      <div className="flex justify-between py-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between gap-y-4 pb-8 sm:pt-8">
         <h1 className="text-2xl font-bold text-gray-800">Nuestros productos</h1>
         <input
-          className="rounded-md border px-4 py-1 outline-0"
+          className="w-1/2 sm:w-fit rounded-md border px-4 py-1 outline-0"
           type="text"
           placeholder="Filtro de productos"
           onChange={handleFilter}
         />
       </div>
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
         {data.length === 0 && <p>No existen productos</p>}
         {result.map((prod) => (
           <ProductCard prod={prod} key={prod.id} />

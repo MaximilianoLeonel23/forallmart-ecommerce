@@ -7,6 +7,7 @@ import TextArea from "../../../molecules/form/TextArea";
 import Select from "../../../molecules/form/Select";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import AddProduct from "../../../organisms/AddProduct";
 const Form = () => {
   const params = useParams();
   const [product, setProduct] = useState();
@@ -78,102 +79,20 @@ const Form = () => {
   };
 
   return (
-    <div className="w-1/2 mx-auto mt-8">
-      <h1>{params.id ? "Editar" : "Agregar"} producto</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-x-4">
-          <Input
-            type="text"
-            name="productName"
-            placeholder="Nombre"
-            defaultValue={product?.product_name}
-            required
-          />
-          <Input
-            type="number"
-            name="price"
-            placeholder="Precio"
-            defaultValue={product?.price}
-            required
-          />
-          <Input
-            type="url"
-            name="images"
-            placeholder="Imagen"
-            defaultValue={product?.images}
-            required
-          />
-          <Input
-            type="text"
-            name="brand"
-            placeholder="Marca"
-            defaultValue={product?.features?.details?.brand}
-          />
-          <Input
-            type="text"
-            name="model"
-            placeholder="Modelo"
-            defaultValue={product?.features?.details?.model}
-          />
-          <Input
-            type="text"
-            name="year"
-            placeholder="Año"
-            defaultValue={product?.features?.details?.year}
-          />
-          <Input
-            type="number"
-            name="rating"
-            placeholder="Calificación"
-            defaultValue={product?.features?.stats?.rating}
-          />
-          <Input
-            type="text"
-            name="color"
-            placeholder="Color"
-            defaultValue={product?.features?.details?.color}
-          />
-          <Input
-            type="number"
-            name="discount"
-            placeholder="Descuento"
-            defaultValue={product?.features?.stats?.discount}
-          />
-          <Input
-            type="number"
-            name="stock"
-            placeholder="Stock"
-            defaultValue={product?.features?.stats?.stock}
-            required
-          />
-          <Select
-            name="category"
-            categories={[
-              "joyeria",
-              "moda",
-              "autos",
-              "hogar",
-              "tecnología",
-              "electrodomésticos",
-              "salud y belleza",
-              "accesorios",
-              "otros",
-            ]}
-            defaultValue={product?.features?.details?.category}
-          />
-          <TextArea
-            name="description"
-            placeholder="Descripción"
-            rows="2"
-            required
-            defaultValue={product?.description}
-          />
-          <button type="submit" className="btn-ghost">
-            {params.id ? "Editar" : "Agregar"} producto
-          </button>
-          {error && <p>{JSON.stringify(error)}</p>}
-        </div>
-      </form>
+    <div className="mx-auto overflow-x-auto w-full">
+      <div className="mb-4">
+        <h1 className="text-2xl font-bold text-gray-800">
+          {params.id ? "Editar" : "Agregar"} producto
+        </h1>
+      </div>
+      <section className="border border-gray-200 bg-white rounded p-8">
+        <AddProduct
+          handleSubmit={handleSubmit}
+          product={product}
+          params={params}
+          error={error}
+        />
+      </section>
     </div>
   );
 };
