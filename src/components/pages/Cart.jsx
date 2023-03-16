@@ -17,8 +17,6 @@ const Cart = () => {
   if (value < 1000) {
     ship = value * 0.1;
   }
-
-  console.log(value);
   const handleOrder = () => {
     let products = state.cart.map((p) => {
       return {

@@ -23,7 +23,7 @@ const Form = () => {
     }
   }, []);
 
-  console.log(product);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {

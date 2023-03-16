@@ -9,7 +9,6 @@ const Product = () => {
   const params = useParams();
   const { state, dispatch } = useContext(CartContext);
   const [product, setProduct] = useState({});
-  console.log(product);
   const details = product?.features?.details;
   const stats = product?.features?.stats;
   useEffect(() => {
