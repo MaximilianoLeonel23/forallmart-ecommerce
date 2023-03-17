@@ -38,7 +38,7 @@ const UpdateProfile = ({handleUpdate, userData}) => {
                 </div>
               </div>
               <div className="flex flex-col justify-end">
-                <button className="btn-ghost">Actualizar perfil</button>
+                <button className="btn-disabled">Actualizar perfil</button>
               </div>
             </div>
           </form>

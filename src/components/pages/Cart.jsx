@@ -12,7 +12,11 @@ const Cart = () => {
   const [order, setOrder] = useState();
 
   let value = 0;
-  state.cart.forEach((c) => (value += c.price));
+  state.cart.forEach((c) => {
+    c?.features?.stats?.discount
+      ? (value += c.price - c.price * (c?.features?.stats?.discount / 100))
+      : (value += c.price);
+  });
   let ship = 0;
   if (value < 1000) {
     ship = value * 0.1;
@@ -81,10 +85,20 @@ const Cart = () => {
                   Crear orden
                 </button>
               ) : (
-                <>
-                  <p>ID de la orden de compra: {order.id}</p>
+                <div className="flex flex-col gap-y-2 mt-4 sm:mt-0 border border-gray-200 bg-white p-4 text-gray-800">
+                  <h4 className="bg-primary-200 p-2 rounded text-primary-500 text-sm sm:text-base">
+                    ¡Felicidades! Su orden de compra ha sido procesada. Para
+                    continuar con el pago utilice alguno de los medios de pago
+                    correspondientes.
+                  </h4>
+                  <p className="text-xs sm:text-sm font-light">
+                    Orden de compra: {order.id}
+                  </p>
+                  <p className="text-sm sm:text-base font-medium">
+                    Medios de pago
+                  </p>
                   <PayPalPayment value={value} order={order} />
-                </>
+                </div>
               )}
             </div>
           )}

@@ -16,12 +16,25 @@ const CartItem = ({ prod }) => {
             />
           </div>
           <div>
-            <h2 className="text-sm sm:text-lg font-semibold">{prod?.product_name}</h2>
+            <h2 className="text-sm sm:text-lg font-semibold">
+              {prod?.product_name}
+            </h2>
           </div>
         </div>
         <div className="flex flex-col justify-between items-end">
           <div className="flex flex-col">
-            <p className="font-semibold text-sm sm:text-base">{formatPrice(prod?.price)}</p>
+            {prod?.features?.stats?.discount ? (
+              <p className="font-semibold text-sm sm:text-base">
+                {formatPrice(
+                  prod?.price -
+                    prod.price * (prod?.features?.stats?.discount / 100)
+                )}
+              </p>
+            ) : (
+              <p className="font-semibold text-sm sm:text-base">
+                {formatPrice(prod?.price)}
+              </p>
+            )}
           </div>
 
           <button

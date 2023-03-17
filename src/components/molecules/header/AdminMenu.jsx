@@ -27,7 +27,7 @@ const AdminMenu = () => {
       <AdminAside aside={asideAdmin} />
       {/* Menú admin desktop */}
       <nav className="hidden sm:block">
-        <ul className="flex items-center gap-x-8">
+        <ul className="flex items-center gap-x-6">
           <li>
             <Link className="menu-item" to="/admin/productos">
               Productos
