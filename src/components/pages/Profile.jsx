@@ -67,13 +67,13 @@ const Profile = () => {
               </p>
             </div>
           )}
-          <h2 className="text-lg font-semibold text-gray-800">
+          <h2 className="text-lg text-center font-semibold text-gray-800">
             {userData?.details?.fullname}
           </h2>
         </div>
         {/* Info */}
         <div className="w-full">
-          <UpdateProfile userData={userData} handleUpdate={handleUpdate}/>
+          <UpdateProfile userData={userData} handleUpdate={handleUpdate} />
         </div>
       </section>
       {/* Sección de compras del usuario */}
