@@ -71,7 +71,7 @@ const Cart = () => {
               <p>No hay productos en el carrito</p>
             </div>
           ) : (
-            <div>
+            <div className="w-full">
               {state.cart.map((prod) => {
                 return (
                   <div>

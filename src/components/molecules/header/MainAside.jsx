@@ -65,7 +65,7 @@ const MainAside = ({ userData, handleSession, aside }) => {
           )}
           {userData?.is_admin && (
             <li
-              className="flex items-center gap-x-2 border-t border-gray-200 pt-4"
+              className="flex items-center gap-x-2 "
               onClick={() => {
                 aside?.classList?.toggle("-translate-x-full");
               }}
@@ -80,7 +80,7 @@ const MainAside = ({ userData, handleSession, aside }) => {
           )}
           {token() ? (
             <li
-              className="flex items-center gap-x-2"
+              className="flex items-center gap-x-2 border-t border-gray-200 pt-4"
               onClick={() => {
                 aside?.classList?.toggle("-translate-x-full");
               }}
