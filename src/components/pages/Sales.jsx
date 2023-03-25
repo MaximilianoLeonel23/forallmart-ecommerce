@@ -3,6 +3,7 @@ import useFetch from "./../../hooks/useFetch";
 import { token } from "./../../helpers/auth";
 import { formatPrice, calculateInvPrice } from "../../helpers/number";
 import Loading from "../molecules/Loading";
+
 const Sales = () => {
   const { data, loading, error } = useFetch("admin/invoices", {
     headers: {

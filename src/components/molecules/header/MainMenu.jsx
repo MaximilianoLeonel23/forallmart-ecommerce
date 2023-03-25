@@ -9,7 +9,12 @@ const MainMenu = () => {
   const nav = useNavigate();
   const { userData, setUserData } = useContext(UserContext);
   const { state } = useContext(CartContext);
-  const aside = document.getElementById("aside");
+
+  const showMenu = () => {
+    const aside = document.getElementById("aside");
+    aside.classList?.toggle("-translate-x-full");
+  };
+
   const handleSession = () => {
     deleteToken();
     nav("/");
@@ -34,11 +39,7 @@ const MainMenu = () => {
             </Link>
           </li>
           <li>
-            <div
-              onClick={() => {
-                aside?.classList?.toggle("-translate-x-full");
-              }}
-            >
+            <div onClick={showMenu}>
               <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
                 <path d="M3.5 17.275v-1h17v1Zm0-4.775v-1h17v1Zm0-4.775v-1h17v1Z" />
               </svg>
@@ -50,7 +51,7 @@ const MainMenu = () => {
       <MainAside
         userData={userData}
         handleSession={handleSession}
-        aside={aside}
+        showMenu={showMenu}
       />
       {/* Menú superior desktop */}
       <MainNavDesktop
